@@ -18,6 +18,12 @@ export default (state = initialState, action) => {
         isRequesting: true
       }
     }
+    case SEARCH_USER_SUCCESS: {
+      return {
+        ...state,
+        users: action.payload.items
+      }
+    }
     default: {
       return state;
     }
