@@ -24,6 +24,12 @@ export default (state = initialState, action) => {
         users: action.payload.items
       }
     }
+    case SEARCH_USER_ERROR: {
+      return {
+        ...state,
+        users: []
+      }
+    }
     default: {
       return state;
     }
