@@ -5,6 +5,9 @@ export const SEARCH_USER_REQUEST = 'githubusers/SEARCH_USER_REQUEST';
 export const SEARCH_USER_SUCCESS = 'githubusers/SEARCH_USER_SUCCESS';
 export const SEARCH_USER_ERROR = 'githubusers/SEARCH_USER_ERROR';
 
+export const FETCH_USER_REPOS = 'githubusers/FETCH_USER_REPOS';
+export const FETCH_USER_REPOS_ERROR = 'githubusers/FETCH_USER_REPOS_ERROR';
+
 const initialState = {
   users: [],
   userDetail: {},
@@ -31,6 +34,12 @@ export default (state = initialState, action) => {
         ...state,
         users: [],
         isRequesting: false
+      }
+    }
+    case FETCH_USER_REPOS: {
+      return {
+        ...state,
+
       }
     }
     default: {
@@ -60,12 +69,19 @@ export const searchUserReq = (keyword) => {
   }
 }
 
-export const fetchUserDetail = (slug) => {
-  axios.get(``)
+export const fetchUserRepos = (slug) => {
+  return dispatch => {
+  axios.get(`https://api.github.com/users/${slug}/repos`)
     .then(res => {
-
+      dispatch({
+        type: FETCH_USER_REPOS,
+        payload:res.data
+      });
     })
     .catch(err => {
-
+      dispatch({
+        type: FETCH_USER_REPOS_ERROR
+      });
     });
+  }
 }

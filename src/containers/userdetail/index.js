@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import {
-  searchUserReq,
+  fetchUserRepos,
 } from '../../modules/githubusers';
 
 class UserDetail extends Component {
@@ -17,6 +17,8 @@ class UserDetail extends Component {
     const { match } = this.props;
     const slug = match.params.slug
     this.setState({ slug });
+
+    this.props.fetchUserRepos(slug);
   }
   render() {
     return (
@@ -26,13 +28,13 @@ class UserDetail extends Component {
 }
 
 const mapStateToProps = state => ({
-  githubUsers: state.githubusers.users
+  githubUserDetail: state.githubusers.userDetail
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      searchUserReq,
+      fetchUserRepos,
       changePage: () => push('/about-us')
     },
     dispatch
