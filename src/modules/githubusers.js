@@ -7,6 +7,7 @@ export const SEARCH_USER_ERROR = 'githubusers/SEARCH_USER_ERROR';
 
 const initialState = {
   users: [],
+  userDetail = {},
   isRequesting: false,
 };
 
@@ -21,13 +22,15 @@ export default (state = initialState, action) => {
     case SEARCH_USER_SUCCESS: {
       return {
         ...state,
-        users: action.payload.items
+        users: action.payload.items,
+        isRequesting: false
       }
     }
     case SEARCH_USER_ERROR: {
       return {
         ...state,
-        users: []
+        users: [],
+        isRequesting: false
       }
     }
     default: {
@@ -55,4 +58,14 @@ export const searchUserReq = (keyword) => {
         });
       })
   }
+}
+
+export const fetchUserDetail = (slug) => {
+  axios.get(``)
+    .then(res => {
+
+    })
+    .catch(err => {
+
+    });
 }
