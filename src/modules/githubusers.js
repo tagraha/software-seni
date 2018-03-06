@@ -7,7 +7,7 @@ export const SEARCH_USER_ERROR = 'githubusers/SEARCH_USER_ERROR';
 
 const initialState = {
   users: [],
-  userDetail = {},
+  userDetail: {},
   isRequesting: false,
 };
 
