@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { Link } from 'react-router-dom';
 import {
   fetchUserRepos,
 } from '../../modules/githubusers';
+
+import UserRepos from './../../components/UserRepos'
 
 class UserDetail extends Component {
   constructor(props) {
@@ -21,14 +24,35 @@ class UserDetail extends Component {
     this.props.fetchUserRepos(slug);
   }
   render() {
+    const { slug } = this.state;
+    const { githubUserRepos } = this.props;
+
     return (
-      <div>UserDetail</div>
+      <div>
+        <div className="row">
+          <div className="column">
+            <h1>{slug}&nbsp;repositories</h1>
+          </div>
+        </div>
+
+        <div>
+          {githubUserRepos && githubUserRepos.length === 0 &&
+            <span>
+              <h3>found nothing <small>open your console</small></h3>
+              <Link to="/">back</Link>
+            </span>
+          }
+          {githubUserRepos.map((value) =>
+            <UserRepos key={value.id} repoData={value} />
+          )}
+        </div>
+      </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  githubUserDetail: state.githubusers.userDetail
+  githubUserRepos: state.githubusers.userRepos
 });
 
 const mapDispatchToProps = dispatch =>
