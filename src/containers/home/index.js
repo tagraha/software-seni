@@ -22,10 +22,6 @@ class Home extends Component {
 
     debounce = setTimeout(() => {
       this.props.searchUserReq(keyword);
-      setTimeout(() => {
-        console.log("YOLO")
-        console.log(this.props)
-      }, 1000);
     }, 700);
   }
 
