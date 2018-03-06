@@ -10,7 +10,7 @@ class UserDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      slug = ""
+      slug: ""
     }
   }
   componentDidMount() {
