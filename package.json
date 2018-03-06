@@ -22,7 +22,7 @@
     "redux-thunk": "^2.2.0",
     "sanitize.css": "^5.0.0"
   },
-  "homepage": "https://tagraha.github.io/software-seni/",
+  "homepage": "https://tagraha.github.io",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

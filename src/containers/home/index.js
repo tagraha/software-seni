@@ -33,7 +33,7 @@ class Home extends Component {
         <div className="row">
           <div className="column">
             <h1>Home</h1>
-
+            <small>open your console, we're using redux logger</small>
             <input
               type="text" 
               placeholder="enter github username to search"
