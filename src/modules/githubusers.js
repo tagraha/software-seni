@@ -10,7 +10,7 @@ export const FETCH_USER_REPOS_ERROR = 'githubusers/FETCH_USER_REPOS_ERROR';
 
 const initialState = {
   users: [],
-  userDetail: {},
+  userRepos: [],
   isRequesting: false,
 };
 
@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
     case FETCH_USER_REPOS: {
       return {
         ...state,
-
+        userRepos: action.payload
       }
     }
     default: {
