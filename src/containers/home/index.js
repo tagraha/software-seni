@@ -44,7 +44,7 @@ class Home extends Component {
 
         <div>
           {githubUsers.map((value) => 
-            <UserList userData={value}/>
+            <UserList userData={value} key={value.id}/>
           )}
         </div>
 
